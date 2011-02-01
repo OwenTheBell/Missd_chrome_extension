@@ -1,0 +1,15 @@
+<html>
+	<script>
+		function saveState(){
+			chrome.extension.getBackgroundPage().saveState();
+		}
+		
+		function loadState(){
+			chrome.extension.getBackgroundPage().loadState();
+		}
+	</script>
+	<body>
+		<button type='button' onclick='saveState()'>Save</button>
+		<button type='button' onclick='loadState()'>Restore</button>
+	</body>
+</html>

@@ -1,0 +1,17 @@
+{
+	"name": "Missd Extension",
+	"version": "0.1",
+	"description": "Extension designed to use the Missd",
+	"icons": {
+		"48": "msd_large.png"
+	},
+	"browser_action": {
+		"default_icon": "msd_small.png",
+		"default_popup": "popup.html"
+	},
+    "background_page":"background.html",
+	"permissions": [
+		"tabs",
+		"http://localhost/"
+	]
+}
