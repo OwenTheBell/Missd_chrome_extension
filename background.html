@@ -14,10 +14,15 @@
 				</param>\
 				<param>\
 				<value><string><![CDATA[<?xml version="1.0"?><browserState>\
-  					<window>\
-      						<tab url="http://www.blah.com"></tab>\
-  					</window>\
-				</browserState>]]></string></value>\
+				';
+				for (var i = 0; i < windows.length; i++){
+					req = req + '<window>\n';
+						for (var j = 0; j < windows[i].tabs.length; j++){
+							req = req + '<tab url="' + windows[i].tabs[j].url + '"></tab>\n';
+						}
+					req = req + '</window>\n';
+				}
+				var req = req + '</browserState>]]></string></value>\
 				</param>\
 				<param>\
 				<value><boolean>1</boolean></value>\
@@ -31,6 +36,10 @@
 				xmlhttp.open('POST', 'http://localhost:8198',true);
 				xmlhttp.send(req);
 				});
+		}
+		
+		function generateXml(){
+			
 		}
 		
 		function loadState(){
