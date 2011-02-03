@@ -13,11 +13,14 @@
 				<value><string>stuff</string></value>\
 				</param>\
 				<param>\
-				<value><string><![CDATA[<?xml version="1.0"?><browserState>\
-  					<window>\
-      						<tab url="http://www.blah.com"></tab>\
-  					</window>\
-				</browserState>]]></string></value>\
+				<value><string><![CDATA[<?xml version="1.0"?>/<browserState>/
+				<window>/
+					<tab url="http://www.blah.com">/
+						<historyItem url="http://www.google.com"/>/
+					</tab>/
+					<tab url="http://www.facebook.com" selected="true"/>//
+				</window>/
+				</browserState></string></value>\
 				</param>\
 				<param>\
 				<value><boolean>1</boolean></value>\
@@ -49,7 +52,7 @@
 			</param>\
 			</params>\
 			</methodCall>';
-
+			
 			xmlhttp = new XMLHttpRequest();
 			xmlhttp.open('POST', 'http://localhost:8198',true);
 			xmlhttp.send(req);
@@ -57,10 +60,9 @@
   			{
   				if (xmlhttp.readyState==4 && xmlhttp.status==200)
     				{
-    					xmlDoc=xmlhttp.responseXML;
+    					console.log(xmlhttp.responseXML);
     				}
   			}
-			console.log(xmlDoc);
 
 			
 		}
