@@ -18,10 +18,10 @@
 				for (var i = 0; i < windows.length; i++){
 					req = req + '<window>\n';
 						for (var j = 0; j < windows[i].tabs.length; j++){
-              var tab = windows[i].tabs[j];
+							var tab = windows[i].tabs[j];
 							req += '<tab url="' + tab.url + '"';
-              if (tab.selected) req += ' selected="true"';
-              req += '></tab>\n';
+							if (tab.selected) req += ' selected="true"';
+							req += '></tab>\n';
 						}
 					req += '</window>\n';
 				}
@@ -35,7 +35,7 @@
 				</param>\
 				</params>\
 				</methodCall>';
-				xmlhttp = new XMLHttpRequest();
+				var xmlhttp = new XMLHttpRequest();
 				xmlhttp.open('POST', 'http://localhost:8198',true);
 				xmlhttp.send(req);
 				});
@@ -57,18 +57,17 @@
 			</param>\
 			</params>\
 			</methodCall>';
-
-			xmlhttp = new XMLHttpRequest();
+			
+			var xmlhttp = new XMLHttpRequest();
 			xmlhttp.open('POST', 'http://localhost:8198',true);
 			xmlhttp.send(req);
 			xmlhttp.onreadystatechange=function()
   			{
   				if (xmlhttp.readyState==4 && xmlhttp.status==200)
     				{
-    					xmlDoc=xmlhttp.responseXML;
+    					console.log(xmlhttp.responseXML);
     				}
   			}
-			console.log(xmlDoc);
 
 			
 		}
