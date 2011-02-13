@@ -66,8 +66,7 @@ function loadState(){
   {
     if (xmlhttp.readyState==4 && xmlhttp.status==200)
       {
-        xmlData = xmlhttp.responseXML;
-        reconstruct(xmlhttp.responseXML);
+         reconstruct(xmlhttp.responseXML);
       }
   }
 		
@@ -75,6 +74,17 @@ function loadState(){
 
 function reconstruct(xmlData){
   console.log(xmlData);
+  //console.log(xmlData.getElementsByTagName("tab")[0]);
+  $(xmlData).find("window").each(function () {
+    console.log('Creating a window');
+    var urls = new Array();
+    $(this).find("tab").each(function (){
+      urls.push($(this).attr("url"));
+    });
+    chrome.windows.create({"url": urls}, function(window){
+    });
+  });
+  console.log('I can make it here');
 }
 </script>
 </html>
