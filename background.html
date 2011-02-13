@@ -73,9 +73,11 @@ function loadState(){
 }
 
 function reconstruct(xmlData){
-  console.log(xmlData);
-  //console.log(xmlData.getElementsByTagName("tab")[0]);
-  $(xmlData).find("window").each(function () {
+  var data = $(xmlData).find('value');
+  textified = data.text();
+  parser=new DOMParser();
+  parsed=parser.parseFromString(textified,"text/xml");
+  $(parsed).find('window').each(function () {
     console.log('Creating a window');
     var urls = new Array();
     $(this).find("tab").each(function (){
