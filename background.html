@@ -77,8 +77,9 @@ function reconstruct(xmlData){
   textified = data.text();
   parser=new DOMParser();
   parsed=parser.parseFromString(textified,"text/xml");
+  console.log(parsed);
   $(parsed).find('window').each(function () {
-    console.log('Creating a window');
+    //console.log('Creating a window');
     var urls = new Array();
     $(this).find("tab").each(function (){
       urls.push($(this).attr("url"));
@@ -86,7 +87,7 @@ function reconstruct(xmlData){
     chrome.windows.create({"url": urls}, function(window){
     });
   });
-  console.log('I can make it here');
+  //console.log('I can make it here');
 }
 </script>
 </html>
